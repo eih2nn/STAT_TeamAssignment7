@@ -14,6 +14,7 @@
 #################################################################################
 
 library(tidyverse)
+library(Metrics)
 
 # For this team assignment you will use the file "teamassign07train.csv" to develop
 # a linear model using whatever methods you consider appropriate. You will then use
@@ -24,8 +25,14 @@ library(tidyverse)
 Test <- read.csv("teamassign07test.csv", encoding = 'utf-8', stringsAsFactors = FALSE)
 Train <- read.csv("teamassign07train.csv", encoding = 'utf-8', stringsAsFactors = FALSE)
 
+#Separate training set into training and validation components 
+
+set.seed(2)
 Sample <- sample_n(Train,200)
 Valid <- setdiff(Train,Sample)
+
+
+
 
 # Once you have predicted the values of the response variable for the testing set,
 # you should save them to a vector called predvect and write them into a .csv file 
