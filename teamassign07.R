@@ -14,7 +14,6 @@
 #################################################################################
 
 library(tidyverse)
-setwd("~/Documents/GitHub/STAT_TeamAssignment7")
 
 # For this team assignment you will use the file "teamassign07train.csv" to develop
 # a linear model using whatever methods you consider appropriate. You will then use
