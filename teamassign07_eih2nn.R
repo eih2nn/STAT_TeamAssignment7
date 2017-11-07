@@ -36,30 +36,31 @@ lm1 = lm(y~.,data=Sample)
 summary(lm1)
 #Coefficients:
 #Estimate Std. Error t value Pr(>|t|)    
-#(Intercept) 250.4781    28.1180    8.91  4.0e-16 ***
-#x1           -0.2703     0.0283   -9.55  < 2e-16 ***
-#x2            0.1424     0.0200    7.11  2.2e-11 ***
-#x3            0.0541     0.0392    1.38   0.1697    
-#x4           -0.6987     0.0880   -7.94  1.7e-13 ***
-#x5            0.2778     0.2174    1.28   0.2027    
-#x6           13.6297     1.7790    7.66  8.8e-13 ***
-#x7            0.0675     0.0231    2.92   0.0039 ** 
+#(Intercept) 248.3845    25.8347    9.61  < 2e-16 ***
+#x1           -0.2864     0.0268  -10.67  < 2e-16 ***
+#x2            0.1535     0.0181    8.47  6.5e-15 ***
+#x3            0.0952     0.0352    2.70   0.0075 ** 
+#x4           -0.6970     0.0803   -8.68  1.7e-15 ***
+#x5            0.1557     0.1999    0.78   0.4372    
+#x6           15.7673     1.6903    9.33  < 2e-16 ***
+#x7            0.1029     0.0220    4.67  5.6e-06 ***
 
-#Residual standard error: 3.27 on 192 degrees of freedom
-#Multiple R-squared:  0.88,	Adjusted R-squared:  0.875 
-#F-statistic:  201 on 7 and 192 DF,  p-value: <2e-16
+#Residual standard error: 3.06 on 192 degrees of freedom
+#Multiple R-squared:  0.89,	Adjusted R-squared:  0.886 
+#F-statistic:  223 on 7 and 192 DF,  p-value: <2e-16
+
 
 #Select out variables shown to be insignificant in previous model one by one...
-lm2 = lm(y~x1+x2+x4+x5+x6+x7,data=Sample)
+lm2 = lm(y~x1+x2+x3+x4+x6+x7,data=Sample)
 summary(lm2)
-#x5 still insignificant
+#x3 is significant, but significantly less so than the others
 
 lm3 = lm(y~x1+x2+x4+x6+x7,data=Sample)
 summary(lm3)
 
 preds.lm3 <- predict(lm3, newdata = Valid)
 
-mse(Valid$y, preds.lm3) #13.4
+mse(Valid$y, preds.lm3) #15.8
 
 # Once you have predicted the values of the response variable for the testing set,
 # you should save them to a vector called predvect and write them into a .csv file 
