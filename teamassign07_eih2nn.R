@@ -25,7 +25,8 @@ setwd("~/Documents/GitHub/STAT_TeamAssignment7")
 Test <- read.csv("teamassign07test.csv", encoding = 'utf-8', stringsAsFactors = FALSE)
 Train <- read.csv("teamassign07train.csv", encoding = 'utf-8', stringsAsFactors = FALSE)
 
-
+Sample <- sample_n(Train,200)
+Valid <- setdiff(Train,Sample)
 
 # Once you have predicted the values of the response variable for the testing set,
 # you should save them to a vector called predvect and write them into a .csv file 
